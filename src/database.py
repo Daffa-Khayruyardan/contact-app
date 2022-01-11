@@ -7,14 +7,14 @@
 # make linked list class
 class SingleLingkedList:
     class Node:     
-        def __init__(self,data=None,next_node=None,list_data=None):
+        def __init__(self,data=None,next_node=None):
             self.data = data 
             self.next = next_node
-            self.list_data = list_data
 
-    def __init__(self,name = None, number = None):
+    def __init__(self,name = None, number = None,list_data=None):
         self.head_name = name
         self.head_number = number
+        self.list_data = list_data
 
     # inset new item to linked list
     def insert(self,data_name,data_number):
@@ -52,11 +52,9 @@ class SingleLingkedList:
         curr_name = self.head_name
 
         while curr_name != None:
-            result = curr_name.data
+            self.list_data
 
             curr_name = curr_name.next
-
-            return result
 
     # display all number data in linked list
     def show_all_number(self):

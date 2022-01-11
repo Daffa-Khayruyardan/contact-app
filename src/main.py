@@ -16,11 +16,6 @@ def add_contact():
     add_contact.title("Add New Contact")
 
 def main():
-    # intiate object for linked list class
-    contact_app_databases = SLL()
-
-    contact_app_databases.insert("Daffa","08577")
-
     # init main app
     App = Tk()
 
@@ -39,14 +34,19 @@ def main():
     add_button = Button(text="add",command=add_contact)
     add_button.place(x=238,y=100)
 
-    clear_button = Button(text="clear")
-    clear_button.place(x=38,y=360)
-
     list_label = Label(text="Contact Person")
     list_label.place(x=38,y=110)
 
     list_contact = Listbox(height=14,width=39,highlightthickness=1)
     list_contact.place(x=38,y=130)
+
+    # intiate object for linked list class
+    contact_app_databases = SLL(list_contact)
+
+    contact_app_databases.insert("Daffa","08577")
+
+    clear_button = Button(text="clear")
+    clear_button.place(x=38,y=360)
 
     # start window loop
     App.mainloop()
