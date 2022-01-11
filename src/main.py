@@ -43,7 +43,7 @@ def main():
     # intiate object for linked list class
     contact_app_databases = SLL(list_contact)
 
-    contact_app_databases.insert("Daffa","08577")
+    contact_app_databases.insert("Daffa",8577)
 
     clear_button = Button(text="clear")
     clear_button.place(x=38,y=360)

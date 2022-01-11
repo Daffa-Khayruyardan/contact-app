@@ -16,20 +16,24 @@ class SingleLingkedList:
         self.head_number = number
         self.list_data = list_data
 
-    # inset new item to linked list
+    # inset new item to linked list at the end
     def insert(self,data_name,data_number):
+        # create both number and name new node
         new_node_name = self.Node(data_name)
         new_node_number = self.Node(data_number)
-
-        if self.head_name == None and self.head_number == None:
+        
+        if (self.head_name is None) and (self.head_number is None):
+            # add new node to first node if first node empty
             self.head_name = new_node_name
             self.head_number = new_node_number
         else:
-            new_node_name.next(self.head_name)
-            new_node_number.next(self.head_number)
-            
-            self.head_name = new_node_name
-            self.head_number = new_node_number
+            # add to next node after first node
+            last_name = self.head_name
+            last_number = self.head_number
+
+            while(last_name.next) and (last_number.next):
+                last_name = last_name.next
+                last_number = last_number.next
 
     # search some item
     def search(self,data_name,data_number):
@@ -63,7 +67,7 @@ class SingleLingkedList:
         while curr_number != None:
             print(curr_number.data)
 
-            curr_name = curr_name.next
+            curr_number = curr_number.next
     
     # display both name and number data in linked list
     def show_all(self):
