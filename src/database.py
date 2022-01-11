@@ -35,6 +35,10 @@ class SingleLingkedList:
                 last_name = last_name.next
                 last_number = last_number.next
 
+            # add new insert node value
+            last_name.next = new_node_name
+            last_number.next = new_node_number
+
     # search some item
     def search(self,data_name,data_number):
         # create current item
@@ -42,14 +46,12 @@ class SingleLingkedList:
         curr_number = self.head_number
 
         # searching item using looping
-        while curr_name == data_name and curr_number == data_number:
+        while (curr_name.data is data_name) and (curr_number.data is data_number):
             if curr_name.data == data_name and curr_number == data_number:
-                result = "Found it"
+                print("Found it")
             else:
                 curr_name = curr_name.next
                 curr_number = curr_number.next
-
-        return result
 
     # display all name data in linked list
     def show_all_name(self):
@@ -64,7 +66,7 @@ class SingleLingkedList:
     def show_all_number(self):
         curr_number = self.head_number
 
-        while curr_number != None:
+        while curr_number is not None:
             print(curr_number.data)
 
             curr_number = curr_number.next
@@ -77,3 +79,11 @@ class SingleLingkedList:
             print(curr_number.data)
 
             curr_name = curr_name.next
+
+coba = SingleLingkedList()
+coba.insert("daffa",85)
+
+coba.insert("siapa aja",90)
+
+coba.show_all_number()
+coba.search("daffa",85)

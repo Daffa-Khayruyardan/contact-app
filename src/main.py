@@ -15,6 +15,9 @@ def add_contact():
     add_contact.geometry("240x320")
     add_contact.title("Add New Contact")
 
+    # make some layout here
+    
+
 def main():
     # init main app
     App = Tk()
@@ -43,7 +46,7 @@ def main():
     # intiate object for linked list class
     contact_app_databases = SLL(list_contact)
 
-    contact_app_databases.insert("Daffa",8577)
+   
 
     clear_button = Button(text="clear")
     clear_button.place(x=38,y=360)
