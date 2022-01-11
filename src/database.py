@@ -11,10 +11,9 @@ class SingleLingkedList:
             self.data = data 
             self.next = next_node
 
-    def __init__(self,name = None, number = None,list_data=None):
+    def __init__(self,name = None, number = None):
         self.head_name = name
         self.head_number = number
-        self.list_data = list_data
 
     # inset new item to linked list at the end
     def insert(self,data_name,data_number):
@@ -31,7 +30,7 @@ class SingleLingkedList:
             last_name = self.head_name
             last_number = self.head_number
 
-            while(last_name.next) and (last_number.next):
+            while (last_name.next) and (last_number.next):
                 last_name = last_name.next
                 last_number = last_number.next
 
@@ -46,9 +45,11 @@ class SingleLingkedList:
         curr_number = self.head_number
 
         # searching item using looping
-        while (curr_name.data is data_name) and (curr_number.data is data_number):
-            if curr_name.data == data_name and curr_number == data_number:
+        while (curr_name != None) and (curr_number != None):
+            if (curr_name.data is data_name) and (curr_number.data is data_number):
                 print("Found it")
+
+                break
             else:
                 curr_name = curr_name.next
                 curr_number = curr_number.next
@@ -58,7 +59,8 @@ class SingleLingkedList:
         curr_name = self.head_name
 
         while curr_name != None:
-            self.list_data
+            if curr_name.data != None:
+                return curr_name.data
 
             curr_name = curr_name.next
 
@@ -82,8 +84,6 @@ class SingleLingkedList:
 
 coba = SingleLingkedList()
 coba.insert("daffa",85)
+coba.insert("siapa",85)
 
-coba.insert("siapa aja",90)
-
-coba.show_all_number()
-coba.search("daffa",85)
+print(coba.show_all_name())

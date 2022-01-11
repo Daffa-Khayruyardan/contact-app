@@ -8,6 +8,10 @@
 from tkinter import *
 from database import SingleLingkedList as SLL
 
+# intiate object for linked list class
+contact_app_databases = SLL()
+
+# make add contact function
 def add_contact():
     add_contact = Tk()
 
@@ -16,7 +20,7 @@ def add_contact():
     add_contact.title("Add New Contact")
 
     # make some layout here
-    
+
 
 def main():
     # init main app
@@ -42,11 +46,6 @@ def main():
 
     list_contact = Listbox(height=14,width=39,highlightthickness=1)
     list_contact.place(x=38,y=130)
-
-    # intiate object for linked list class
-    contact_app_databases = SLL(list_contact)
-
-   
 
     clear_button = Button(text="clear")
     clear_button.place(x=38,y=360)
