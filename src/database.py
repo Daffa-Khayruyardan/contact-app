@@ -7,9 +7,10 @@
 # make linked list class
 class SingleLingkedList:
     class Node:     
-        def __init__(self,data,next_node):
+        def __init__(self,data=None,next_node=None,list_data=None):
             self.data = data 
             self.next = next_node
+            self.list_data = list_data
 
     def __init__(self,name = None, number = None):
         self.head_name = name
@@ -46,6 +47,31 @@ class SingleLingkedList:
 
         return result
 
-    # display all data in linked list
+    # display all name data in linked list
     def show_all_name(self):
-        current
+        curr_name = self.head_name
+
+        while curr_name != None:
+            result = curr_name.data
+
+            curr_name = curr_name.next
+
+            return result
+
+    # display all number data in linked list
+    def show_all_number(self):
+        curr_number = self.head_number
+
+        while curr_number != None:
+            print(curr_number.data)
+
+            curr_name = curr_name.next
+    
+    # display both name and number data in linked list
+    def show_all(self):
+        curr_number = self.head_number
+
+        while curr_number != None:
+            print(curr_number.data)
+
+            curr_name = curr_name.next
