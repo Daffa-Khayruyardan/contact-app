@@ -20,6 +20,9 @@ class ContactApp:
         self.head_name = name
         self.head_number = number
 
+        # size of list contact
+        self.size = 0
+
         # init main app
         self.App = Tk()
 
@@ -27,7 +30,14 @@ class ContactApp:
         self.App.geometry("320x400")
         self.App.title("Contact App")
 
-        
+        # make contact name list
+        self.list_contact_name = Listbox(self.App,height=14,width=19,highlightthickness=1)
+        self.list_contact_name.place(x=38,y=130)
+
+        # make contact number list
+        self.list_contact_number = Listbox(self.App,height=14,width=20,highlightthickness=1)
+        self.list_contact_number.place(x=158,y=130)
+
     # inset new item to linked list at the end
     def insert(self,data_name,data_number):
         # create both number and name new node
@@ -52,13 +62,26 @@ class ContactApp:
             last_number.next = new_node_number
 
     # display all name data in linked list
-    def show_all_name(self,list_box):
+    def show_all(self):
         curr_name = self.head_name
+        curr_number = self.head_number
 
         while curr_name != None:
-            list_box.insert(curr_name.data)
+            self.list_contact_name.insert(self.size,curr_name.data)
+            self.list_contact_number.insert(self.size,curr_number.data)
+
+            self.size += 1
 
             curr_name = curr_name.next
+
+    # make pop up window
+    def popup_success(self):
+        self.popup_success_window = Tk()
+        self.popup_success_window.geometry("200x90")
+
+        message = Label(self.popup_success_window,text="Add contact successfully")
+
+        message.pack()
 
     # make add contact function
     def add_contact(self):
@@ -68,7 +91,6 @@ class ContactApp:
         # make some setting for add contact window
         self.add_contact_window.geometry("240x320")
         self.add_contact_window.title("Add New")
-
 
         # make some layout here
         name_label = Label(self.add_contact_window,text="Name: ")
@@ -83,12 +105,18 @@ class ContactApp:
         number_entry = Entry(self.add_contact_window,width=32,highlightthickness=1)
         number_entry.place(x=17,y=81)
 
-        add_button = Button(self.add_contact_window,text="Add Contact")
-        add_button.place(x=60,y=135)
-
+        # make function command for add contact button
         def insert_new_contact():
-            number_entry.g
+            user_contact_name = name_entry.get()
+            user_contact_number = number_entry.get()
+
+            self.insert(user_contact_name,user_contact_number)
+
+            self.popup_success()
         
+        # make add contact button here
+        add_button = Button(self.add_contact_window,text="Add Contact",command=insert_new_contact)
+        add_button.place(x=60,y=135)
 
     def main(self):
         # add some widget to window
@@ -105,11 +133,8 @@ class ContactApp:
         list_label = Label(self.App,text="Contact Person")
         list_label.place(x=38,y=110)
 
-        list_contact = Listbox(self.App,height=14,width=39,highlightthickness=1)
-        list_contact.place(x=38,y=130)
-
-        clear_button = Button(self.App,text="clear")
-        clear_button.place(x=38,y=360)
+        clear_button = Button(self.App,text="Clear",command=self.show_all)
+        clear_button.place(x=40,y=362)
 
         # start window loop
         self.App.mainloop()
