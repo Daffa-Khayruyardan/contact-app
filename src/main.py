@@ -74,14 +74,25 @@ class ContactApp:
 
             curr_name = curr_name.next
 
+    def search(self,item_search):
+        # add current data when do search
+        curr_name = self.head_name
+        curr_number = self.head_number
+
+        while (curr_name != None) and (curr_number != None):
+            
+
+            curr_name = curr_name.next
+            curr_number = curr_number.next
+
     # make pop up window
     def popup_success(self):
         self.popup_success_window = Tk()
-        self.popup_success_window.geometry("200x90")
+        self.popup_success_window.geometry("180x70")
+        self.popup_success_window.title("message")
 
         message = Label(self.popup_success_window,text="Add contact successfully")
-
-        message.pack()
+        message.place(x=20,y=22)
 
     # make add contact function
     def add_contact(self):
@@ -89,7 +100,7 @@ class ContactApp:
         self.add_contact_window = Tk()
 
         # make some setting for add contact window
-        self.add_contact_window.geometry("240x320")
+        self.add_contact_window.geometry("240x270")
         self.add_contact_window.title("Add New")
 
         # make some layout here
@@ -133,8 +144,8 @@ class ContactApp:
         list_label = Label(self.App,text="Contact Person")
         list_label.place(x=38,y=110)
 
-        clear_button = Button(self.App,text="Clear",command=self.show_all)
-        clear_button.place(x=40,y=362)
+        show_button = Button(self.App,text="Clear",command=self.show_all)
+        show_button.place(x=40,y=362)
 
         # start window loop
         self.App.mainloop()
