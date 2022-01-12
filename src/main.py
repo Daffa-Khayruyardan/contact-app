@@ -31,6 +31,11 @@ class ContactApp:
         self.App.geometry("320x400")
         self.App.title("Contact App")
 
+        # put search bar in top of main window
+        self.search = Entry(self.App,width=30,highlightthickness=1)
+        self.search.place(x=38,y=4)
+        self.search.config(highlightbackground="black")
+
         # make contact name list
         self.list_contact_name = Listbox(self.App,height=14,width=19,highlightthickness=1)
         self.list_contact_name.place(x=38,y=130)
@@ -82,16 +87,26 @@ class ContactApp:
 
         self.size_show = 0
 
-    def search(self,item_search):
+    def search_contact(self):
+        # clear list box of contact
+        self.list_contact_name.delete(0,END)
+        self.list_contact_number.delete(0,END)
+
         # add current data when do search
         curr_name = self.head_name
         curr_number = self.head_number
 
         while (curr_name != None) and (curr_number != None):
-            self.list_contact_name.insert()            
+            if (self.search.get() in curr_name.data):
+                self.list_contact_name.insert(self.size_search,curr_name.data)
+                self.list_contact_number.insert(self.size_search,curr_number.data)
+
+            self.size_search += 1
 
             curr_name = curr_name.next
             curr_number = curr_number.next
+
+        self.size_search = 0
 
     # make pop up window
     def popup_success(self):
@@ -139,11 +154,7 @@ class ContactApp:
 
     def main(self):
         # add some widget to window
-        search = Entry(self.App,width=30,highlightthickness=1)
-        search.place(x=38,y=4)
-        search.config(highlightbackground="black")
-
-        search_button = Button(self.App,text="search")
+        search_button = Button(self.App,text="search",command=self.search_contact)
         search_button.place(x=230, y=0)
 
         add_button = Button(self.App,text="add",command=self.add_contact)
