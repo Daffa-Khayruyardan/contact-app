@@ -21,7 +21,8 @@ class ContactApp:
         self.head_number = number
 
         # size of list contact
-        self.size = 0
+        self.size_show = 0
+        self.size_search = 0
 
         # init main app
         self.App = Tk()
@@ -63,16 +64,23 @@ class ContactApp:
 
     # display all name data in linked list
     def show_all(self):
+        # clear list box of contact
+        self.list_contact_name.delete(0,END)
+        self.list_contact_number.delete(0,END)
+
+        # add current name and number of contact
         curr_name = self.head_name
         curr_number = self.head_number
 
         while curr_name != None:
-            self.list_contact_name.insert(self.size,curr_name.data)
-            self.list_contact_number.insert(self.size,curr_number.data)
+            self.list_contact_name.insert(self.size_show,curr_name.data)
+            self.list_contact_number.insert(self.size_show,curr_number.data)
 
-            self.size += 1
+            self.size_show += 1
 
             curr_name = curr_name.next
+
+        self.size_show = 0
 
     def search(self,item_search):
         # add current data when do search
@@ -80,7 +88,7 @@ class ContactApp:
         curr_number = self.head_number
 
         while (curr_name != None) and (curr_number != None):
-            
+            self.list_contact_name.insert()            
 
             curr_name = curr_name.next
             curr_number = curr_number.next
@@ -144,7 +152,7 @@ class ContactApp:
         list_label = Label(self.App,text="Contact Person")
         list_label.place(x=38,y=110)
 
-        show_button = Button(self.App,text="Clear",command=self.show_all)
+        show_button = Button(self.App,text="Show",command=self.show_all)
         show_button.place(x=40,y=362)
 
         # start window loop
