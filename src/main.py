@@ -27,6 +27,12 @@ class ContactApp:
         # init main app
         self.App = Tk()
 
+        # open icon photo here 
+        icon_contact = PhotoImage(file = './assets/Icon.png')
+
+        # set icon to main window
+        self.App.iconphoto(False, icon_contact)
+
         # make some setting for main window
         self.App.geometry("320x400")
         self.App.title("Contact App")
